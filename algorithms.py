@@ -41,6 +41,7 @@ def require_login():
 
 
 def factorial(n):
+    # 0(n) recursive
     if not require_login():
         return
     if n == 1 or n == 0:
@@ -50,6 +51,7 @@ def factorial(n):
 
 
 def find_max(numbers):
+    # 0(n)
     if not require_login():
         return
     nums = numbers[0]
@@ -62,14 +64,14 @@ def find_max(numbers):
 
 
 def linear_search(numbers, target):
+    # 0(n)
     if not require_login:
         return
-    index = -1
     for i in range(len(numbers)):
         if numbers[i] == target:
             return i
 
-    return index
+    return -1
 
 
 while True:
@@ -85,10 +87,20 @@ while True:
         print("The factorial of", num, "is", result)
 
     elif choice == "3":
-        num = input("Enter the list seperated by spaces: ")
+        num = input("Enter numbers seperated by spaces: ")
         nums = [int(n) for n in num.split()]
         result = find_max(nums)
         print("The maximum number is", result)
+
+    elif choice == "4":
+        num = input("Enter numbers separated by spaces: ")
+        nums = [int(n) for n in num.split()]
+        target = int(input("Enter the target number: "))
+        idx = linear_search(nums, target)
+        if idx != -1:
+            print(f"Found {target} at index {idx}")
+        else:
+            print(f"{target} not found.")
 
     elif choice == "6":
         break
