@@ -74,6 +74,19 @@ def linear_search(numbers, target):
     return -1
 
 
+def fibonacci_sequence(n):
+    # 0(n) iterative
+    if not require_login():
+        return
+    if n < 0:
+        print("Please enter a positive int.")
+        return
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+    return a
+
+
 while True:
     print(prompt)
     choice = input("Your choice: ")
@@ -101,6 +114,11 @@ while True:
             print(f"Found {target} at index {idx}")
         else:
             print(f"{target} not found.")
+
+    elif choice == "5":
+        n = int(input("Enter number: "))
+        seq = fibonacci_sequence(n)
+        print(f"The {n}th Fibonacci number is {seq}")
 
     elif choice == "6":
         break
